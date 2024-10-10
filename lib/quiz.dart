@@ -26,6 +26,12 @@ class _QuizState extends State<Quiz> {
     });
   }
 
+  void showResultScreen() {
+    setState(() {
+      activeScreenId = 'result-screen';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget = FirstScreen(switchScreen);
