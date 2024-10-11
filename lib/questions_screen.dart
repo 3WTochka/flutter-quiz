@@ -7,7 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'models/QuestionModel.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key});
+  const QuestionsScreen({super.key, required this.showResultScreen});
+
+  final void Function() showResultScreen;
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
@@ -35,10 +37,10 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       String answer = model.answers[i];
       buttons.add(ElevatedButton(
         onPressed: () {
-          model.userAnswer = i;
+          model.userAnswer = answer;
           answerAction();
           print(
-              '${model.userAnswer} User Pressed: $i but the right answer is: ${model.rightAnswer}');
+              'The answer is: ${model.userAnswer == model.rightAnswer ? 'Correct' : 'Wrong'}');
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -61,8 +63,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
     return questions.map((question) {
       return Text(
         'Question: ${question.question}\n'
-        'Your Answer: ${question.answers[question.userAnswer]}\n'
-        'Right Answer: ${question.answers[question.rightAnswer - 1]}',
+        'Your Answer: ${question.userAnswer}\n'
+        'Right Answer: ${question.rightAnswer}\n\n',
         style: const TextStyle(fontSize: 16),
       );
     }).toList();
@@ -73,6 +75,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
       print('questionIndex: $questionIndex');
       if (questionIndex > 0) {
         questionIndex--;
+      } else {
+        widget.showResultScreen();
       }
     });
   }

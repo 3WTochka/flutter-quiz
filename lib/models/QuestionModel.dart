@@ -1,8 +1,8 @@
 class QuestionModel {
   String question;
   List<String> answers;
-  int rightAnswer = -1;
-  int userAnswer = -1;
+  String rightAnswer;
+  String userAnswer = '';
 
   QuestionModel(
       {required this.question,
