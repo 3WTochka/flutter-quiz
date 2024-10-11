@@ -3,28 +3,48 @@ import 'package:first_quiz/models/QuestionModel.dart';
 class QuestionsData {
   List<QuestionModel> questions = [
     QuestionModel(
-        question: 'Question1',
-        answers: ['1 option 1', '1 option 2', '1 option 3', '1 option 4'],
-        rightAnswer: '1 option 1'),
+        question: 'What is the secret ingredient in grandma’s soup?',
+        answers: ['Love', 'More soup', 'Old socks', 'A pinch of magic'],
+        rightAnswer: 'Love'),
     QuestionModel(
-        question: 'Question2',
-        answers: ['2 option 1', '2 option 2', '2 option 3', '2 option 4'],
-        rightAnswer: '2 option 2'),
+        question: 'Why did the computer go to therapy?',
+        answers: [
+          'It had too many bugs',
+          'It was feeling defragmented',
+          'It had a virus',
+          'It couldn’t find its Ctrl'
+        ],
+        rightAnswer: 'It couldn’t find its Ctrl'),
     QuestionModel(
-        question: 'Question3',
-        answers: ['3 option 1', '3 option 2', '3 option 3', '3 option 4'],
-        rightAnswer: '3 option 3'),
+        question: 'What is faster than a speeding bullet?',
+        answers: [
+          'A cheetah',
+          'Superman',
+          'The internet',
+          'My mom when I forget to do chores'
+        ],
+        rightAnswer: 'My mom when I forget to do chores'),
     QuestionModel(
-        question: 'Question4',
-        answers: ['4 option 1', '4 option 2', '4 option 3', '4 option 4'],
-        rightAnswer: '4 option 4'),
+        question: 'Why don’t skeletons fight each other?',
+        answers: [
+          'They’re spineless',
+          'They don’t have the guts',
+          'They’re boned out',
+          'They’re too dead for that'
+        ],
+        rightAnswer: 'They don’t have the guts'),
     QuestionModel(
-        question: 'Question5',
-        answers: ['5 option 1', '5 option 2', '5 option 3', '5 option 4'],
-        rightAnswer: '5 option 1'),
+        question: 'What’s a cat’s favorite color?',
+        answers: ['Purrrple', 'Meowroon', 'Cyanide', 'Tabby-teal'],
+        rightAnswer: 'Purrrple'),
     QuestionModel(
-        question: 'Question6',
-        answers: ['6 option 1', '6 option 2', '6 option 3', '6 option 4'],
-        rightAnswer: '6 option 2')
+        question: 'If life gives you lemons, what should you do?',
+        answers: [
+          'Make lemonade',
+          'Throw them back',
+          'Sell them',
+          'Eat them whole like a champion'
+        ],
+        rightAnswer: 'Eat them whole like a champion')
   ];
 }
