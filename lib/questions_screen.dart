@@ -7,9 +7,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'models/QuestionModel.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key, required this.showResultScreen});
+  const QuestionsScreen({super.key, required this.showResultScreen(List<QuestionModel> results)});
 
-  final void Function() showResultScreen;
+  final void Function(List<QuestionModel> results) showResultScreen;
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
@@ -59,24 +59,13 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
   final random = Random();
 
-  List<Widget> printResults() {
-    return questions.map((question) {
-      return Text(
-        'Question: ${question.question}\n'
-        'Your Answer: ${question.userAnswer}\n'
-        'Right Answer: ${question.rightAnswer}\n\n',
-        style: const TextStyle(fontSize: 16),
-      );
-    }).toList();
-  }
-
   void answerAction() {
     setState(() {
       print('questionIndex: $questionIndex');
       if (questionIndex > 0) {
         questionIndex--;
       } else {
-        widget.showResultScreen();
+        widget.showResultScreen(questions);
       }
     });
   }
