@@ -19,11 +19,11 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   QuestionsData questionsData = QuestionsData();
   List<QuestionModel> questions = [];
 
-  int questionIndex = 5;
+  int questionIndex = 0;
 
   _QuestionsScreenState() {
     questions = questionsData.questions;
-    questionIndex = questions.length - 1;
+    // questionIndex = questions.length - 1;
   }
 
   Text createQuestionText(String text) => Text(text,
@@ -62,8 +62,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   void answerAction() {
     setState(() {
       print('questionIndex: $questionIndex');
-      if (questionIndex > 0) {
-        questionIndex--;
+      if (questionIndex < questions.length - 1) {
+        questionIndex++;
       } else {
         widget.showResultScreen(questions);
       }

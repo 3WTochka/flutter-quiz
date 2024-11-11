@@ -8,4 +8,8 @@ class QuestionModel {
       {required this.question,
       required this.answers,
       required this.rightAnswer});
+
+  bool isCorrect() {
+    return userAnswer == rightAnswer;
+  }
 }
