@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:first_quiz/dummyData/QuestionsData.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'models/QuestionModel.dart';
 
 class QuestionsScreen extends StatefulWidget {
-  const QuestionsScreen({super.key, required this.showResultScreen(List<QuestionModel> results)});
+  const QuestionsScreen(
+      {super.key, required this.showResultScreen(List<QuestionModel> results)});
 
   final void Function(List<QuestionModel> results) showResultScreen;
 
@@ -27,8 +27,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   }
 
   Text createQuestionText(String text) => Text(text,
-      style: GoogleFonts.lato(
-          fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+      style: Theme.of(context).textTheme.bodyLarge,
       textAlign: TextAlign.center);
 
   List<ElevatedButton> prepareButtons(QuestionModel model) {

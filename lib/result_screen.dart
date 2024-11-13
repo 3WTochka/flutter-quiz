@@ -8,49 +8,50 @@ class ResultScreen extends StatelessWidget {
   final Function() navigateToFirstScreen;
   final List<QuestionModel> results;
 
-  List<Widget> printResults() {
+  List<Widget> printResults(BuildContext context) {
     int countOfQuestions = 1;
     return results.map((question) {
       return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             (countOfQuestions++).toString(),
-            style: const TextStyle(fontSize: 16),
           ),
+          const SizedBox(width: 20),
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   question.question,
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 33, 1, 95)),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 Text(
                   question.userAnswer,
-                  style: const TextStyle(fontSize: 16),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
                 ),
                 Text(
                   question.rightAnswer,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: question.isCorrect()
-                          ? const Color.fromARGB(255, 91, 140, 91)
-                          : const Color.fromARGB(255, 216, 59, 32)),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
               ],
             ),
           ),
         ],
       );
-
-      // return Text(
-      //   'Question: ${question.question} is ${question.isCorrect() ? 'Correct' : 'Wrong'} \n'
-      //   'Your Answer: ${question.userAnswer}\n'
-      //   'Right Answer: ${question.rightAnswer}\n\n',
-      //   style: const TextStyle(fontSize: 16),
-      // );
     }).toList();
   }
 
@@ -62,10 +63,18 @@ class ResultScreen extends StatelessWidget {
         margin: const EdgeInsets.all(40),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            getSummary(),
+            getSummary(context),
             const SizedBox(height: 30),
-            ...printResults(),
+            SizedBox(
+              height: 350,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: printResults(context),
+                ),
+              ),
+            ),
             const SizedBox(height: 30),
             buttonToMainScreen()
           ],
@@ -83,11 +92,12 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
-  Widget getSummary() {
+  Widget getSummary(BuildContext context) {
     int correctAnswers = results.where((element) => element.isCorrect()).length;
     return Text(
       'You answered $correctAnswers out of ${results.length} questions correctly!',
-      style: const TextStyle(fontSize: 24),
+      style: Theme.of(context).textTheme.bodyLarge,
+      textAlign: TextAlign.center,
     );
   }
 }
