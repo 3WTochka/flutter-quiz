@@ -14,8 +14,19 @@ class ResultScreen extends StatelessWidget {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            (countOfQuestions++).toString(),
+          Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+              color: question.isCorrect()
+                  ? const Color.fromARGB(255, 112, 204, 230)
+                  : const Color.fromARGB(255, 213, 87, 213),
+              shape: BoxShape.circle,
+            ),
+            alignment: Alignment.center,
+            child: Text(
+              (countOfQuestions++).toString(),
+            ),
           ),
           const SizedBox(width: 20),
           Expanded(
@@ -32,18 +43,13 @@ class ResultScreen extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                Text(
-                  question.userAnswer,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                ),
-                Text(
-                  question.rightAnswer,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                ),
+                Text(question.rightAnswer,
+                    style: Theme.of(context).textTheme.bodyMedium),
+                Text(question.userAnswer,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: question.isCorrect()
+                            ? const Color.fromARGB(255, 112, 204, 230)
+                            : const Color.fromARGB(255, 228, 111, 115))),
                 const SizedBox(
                   height: 10,
                 ),

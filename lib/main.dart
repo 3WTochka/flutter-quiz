@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(
           bodyLarge: GoogleFonts.lato(
               fontSize: 20, fontWeight: FontWeight.bold, color: const Color.fromARGB(
-              255, 160, 129, 165)),
+              255, 232, 182, 232)),
           bodyMedium: GoogleFonts.lato(
               fontSize: 16, fontWeight: FontWeight.normal, color: Colors.white),
           bodySmall: GoogleFonts.lato(
